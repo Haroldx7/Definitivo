@@ -37,10 +37,12 @@
             <li><a href="/#footer">Contactanos</a></li>
             <li><a href="{{ url_for('logout.logout') }}">Cerrar Sesión</a></li>
         </ul>
+            {% if rol == 2 %}
+                <a class="foto-usuario" href="{{ url_for('perfilempleado.perfilempleado', id_usuario=sesion['id'] ) }}"><img src="{{ url_imagen }}" alt=""></a>
+            {% endif %}
             {% if rol == 3 %}
                 <a class="foto-usuario" href="{{ url_for('perfilcliente.perfilcliente') }}"><img src="{{ url_imagen }}" alt=""></a>
             {% endif %}
-            
             <div class="icono-menu"><ion-icon name="reorder-four-outline"></ion-icon></div>
         {%else%}
         <ul class="navbar">
@@ -68,7 +70,12 @@
                         es una travesía hacia el éxito ven y descubre las diferentes labores
                         que ofrecemos para ti.
                         <div class="boton-centro-slider">
-                            <a href="{{ url_for('catalogo.catalogo') }}" class="boton-slider-1" > Ver Catalogo de Perfiles</a>
+                            {% if rol == 2 %}
+                                <a href="{{ url_for('catalogo.catalogo') }}" class="boton-slider-1" > Ver Catalogo de ofertas</a>
+                            {% endif %}
+                            {% if not sesion or rol == 3 %}
+                                <a href="{{ url_for('catalogo.catalogo') }}" class="boton-slider-1" > Ver Catalogo de Perfiles</a>
+                            {% endif %}
                         </div>
                     </p>
                     
@@ -99,7 +106,12 @@
                     <p>
                         En Labor Lane, Puedes filtrar y seleccionar dependiendo de labor que ocupes y asi optimizar tiempo para tu disposicion.
                         <div class="boton-centro-slider">
-                            <a href="{{ url_for('catalogo.catalogo') }}" class="boton-slider-1" > Ver Catalogo de Perfiles</a>
+                            {% if rol == 2 %}
+                                <a href="{{ url_for('catalogo.catalogo') }}" class="boton-slider-1" > Ver Catalogo de ofertas</a>
+                            {% endif %}
+                            {% if not sesion %}
+                                <a href="{{ url_for('catalogo.catalogo') }}" class="boton-slider-1" > Ver Catalogo de Perfiles</a>
+                            {% endif %}
                         </div>
                     </p>
                     
@@ -214,7 +226,12 @@
             </div>
         </div>
         <div class="boton-centro">
-            <a href="{{ url_for('catalogo.catalogo') }}" class="boton" > Ver Catalogo de Perfiles</a>
+            {% if rol == 2 %}
+                <a href="{{ url_for('catalogo.catalogo') }}" class="boton-slider-1" > Ver Catalogo de ofertas</a>
+            {% endif %}
+            {% if not sesion %}
+                <a href="{{ url_for('catalogo.catalogo') }}" class="boton-slider-1" > Ver Catalogo de Perfiles</a>
+            {% endif %}
         </div>
     </section>
 

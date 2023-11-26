@@ -67,56 +67,58 @@
 
     <div class="form-box register">
         <h2>Registrarse</h2>
-        <form method="post" action="/registrar">
-            <div class="input-box">
-                <span class="icon">
-                    <ion-icon name="person"></ion-icon>
-                </span>
-                <input type="Text" required>
-                <label>Usuario</label>
-            </div>
+        <form method="post" action="/formulario-usuario">
             <div class="input-box">
                 <span class="icon"><ion-icon name="accessibility">
 
                 </ion-icon></span>
-                <input type="Text" required>
+                <input type="Text" name="nombres" required>
                 <label>Nombre</label>
             </div>
             <div class="input-box"> 
                 <span class="icon"><ion-icon name="accessibility"></ion-icon></span>
-                <input type="Text" required>
-                <label>Apellido</label>
+                <input type="Text" name="p_apellido" required>
+                <label>Primer Apellido</label>
+            </div>
+            <div class="input-box"> 
+                <span class="icon"><ion-icon name="accessibility"></ion-icon></span>
+                <input type="Text" name="s_apellido" required>
+                <label>Segundo Apellido</label>
             </div>
             <div class="input-box">
                 <span class="icon"><ion-icon name="phone-portrait"></ion-icon></span>
-                <input type="number" required>
+                <input type="number" name="celular_u" required>
                 <label>Telefono</label>
             </div>
             <div class="input-box">
                 <span class="icon"><ion-icon name="id-card-outline"></ion-icon></ion-icon></span>
-                <input type="Text" required>
-                <label>Tipo Documento</label>
+                <select name="tipo_documento" required>
+                    <option value="" disabled selected>Tipo de documento</option>
+                    <option value="Targeta de Identidad" id="CC">Targeta de Identidad</option>
+                    <option value="Cedula de Ciudadania" id="CE">Cedula de Ciudadania</option>
+                    <option value="Cedula de Extranjeria" id="NIT">Cedula de Extranjeria</option>
+                </select>
             </div>
             <div class="input-box">
                 <span class="icon"><ion-icon name="id-card-outline"></ion-icon></span>
-                <input type="Text" required>
+                <input type="number" name="numero_documento" required>
                 <label>Numero Documento</label>
             </div>
             <div class="input-box">
                 <span class="icon"><ion-icon name="map"></ion-icon></span>
-                <input type="Text" required>
+                <input type="Text" name="direccion" required>
                 <label>Direccion</label>
             </div>
             <div class="input-box">
                 <span class="icon"><ion-icon
                 name="mail"></ion-icon></span>
-                <input type="Text" required>
+                <input type="Text" name="correo" required>
                 <label>Email</label>
             </div>
             <div class="input-box">
                 <span class="icon"><ion-icon
                 name="lock-closed"></ion-icon></span>
-                <input type="password" required>
+                <input type="password" name="contraseña" required>
                 <label>Password</label>
             </div>
         <div class="recuperarcontra-2">

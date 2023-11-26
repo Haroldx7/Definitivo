@@ -24,13 +24,13 @@ def mostrar_empleados():
 
 @crud_bp.route('/eliminar/<int:id>')
 def eliminar_empleados(id):  
-    cnx = mysql.connector.connect(**db_config)
-    cursor = cnx.cursor()  
-    sql = "DELETE FROM usuario WHERE IdUsuario = %s"
+    cnx = mysql.connector.connect(**db_config) # Consulta SQL para insertar los datos en la tabla "empleados"   
+    cursor = cnx.cursor() # Eliminar SQL para obtener los datos de todos los empleados         # Ejecutar la consulta SQL 
+    sql = "UPDATE usuario SET Estadousuario = IF(Estadousuario = 'ACTIVO', 'INACTIVO', 'ACTIVO') WHERE IdUsuario = %s;"
     cursor.execute(sql, (id,))
     cnx.commit()
     cursor.close()
-    cnx.close() 
+    cnx.close() # Retornar los empleados a la plantilla HTML para mostrarlos   
     return redirect('/consultas')
 
 @crud_bp.route('/editar/<int:id>')

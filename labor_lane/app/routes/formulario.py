@@ -34,17 +34,47 @@ def procesar_datos():
     personasacargo = request.form['personasacargo']
     LibretaMilitar = request.form['LibretaMilitar']
     Contenido = request.form['Contenido']
-    rol = 3
+    rol = 2
     Estado = 'ACTIVO'
     cursor = cnx.cursor()
     sql = "insert into usuario (NombresUsuario, PrimerApellidoUsuario, SegundoApellidoUsuario, GeneroUsuario, TipoDocumentoUsuario, NumeroDocumentoUsuario, FechaNacimiento, CelularUsuario, Celular2Usuario, DireccionUsuario, EstratoResidencia, CorreoUsuario, ContraseñaUsuario, EstadoCivil, PersonasACargo, LibretaMilitar, ContenidoPerfil, FK_IdRol, EstadoUsuario) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)" # Parámetros de la consulta SQL   
     data = (nombres, p_apellido, s_apellido, genero, tipo_documento, numero_documento, fecha_nacimiento, celular_u, celular_d, direccion, estrato, correo, contraseña, estadocivil, personasacargo, LibretaMilitar, Contenido, rol, Estado)
     cursor.execute(sql, data)
     cnx.commit()    
+    sql = 'select * from usuario where NumeroDocumentoUsuario = %s'
+    cursor.execute(sql, (tipo_documento))
+    result = cursor.fetchone()
+    nombre = result
+
     cursor.close()
     cnx.close()
     if 'usuario' in session:
         rol = session['usuario']['rol']
         if rol == 1:
             return redirect(url_for('admin.admin'))
-    return render_template('login.html', mensaje="Registrado ingrese su usuario")
+    return redirect(url_for('formulario.habilidad', nombre=nombre))
+
+@formulario_bp.route('/habilidad')
+def habilidad():
+    usuario = None
+    if 'usuario' in session:
+        if session['usuario']['rol'] == 1:
+            usuario = session['usuario']
+    return render_template('habilidades.html', usuario=usuario)
+
+@formulario_bp.route('/procesar-datos-habildad', methods=['POST'])
+def datoshabilidad():
+    nombre_habilidad = request.form['nombre_habilidad']
+    descripcion = request.form['descripcion']
+    nivel = request.form['nivel']
+    categoria = request.form['categoria'] 
+    cnx = mysql.connector.connect(**db_config)
+    cursor = cnx.cursor()
+    sql= "insert into habilidades(NombreHabilidad, DescipcionHabilidad, current_Nivel, FK_IdCategoria) values (%s, %s, %s, %s)"
+    datos = (nombre_habilidad, descripcion, nivel, categoria)
+    cursor.execute(sql, datos)
+    cnx.commit()
+    cursor.close()
+    cnx.close()
+
+    return render_template('resultado.html')

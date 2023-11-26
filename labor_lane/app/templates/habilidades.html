@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Habilidades</title>
+</head>
+<body>
+    <h1>Habilidades</h1>
+    <p>{{ nombre }}</p>
+
+    <form action="/habilidad" method="post">
+        <label for="nombre_h">Nombre de la habilidad en el trabajo/s:</label>
+            <input type="text" name="nombre_habilidad" id="nombre_h" required><br>
+        <label for="Descripcion">Descripcion de la habilidad/es:</label>
+            <textarea type="text" name="descripcion" id="Descripcion" value="Descripcion" required></textarea><br>
+        <label for="categoria">Categoria de su habilidad:</label>
+            <select name="categoria" value="categoria" required>
+                <option value="1" id="Pintores">Pintores</option>
+                <option value="2" id="Constructores">Constructores</option>
+                <option value="3" id="Plomeros">Plomeros</option>
+                <option value="4" id="Electricistas">Electricistas</option>
+                <option value="5" id="Carpinteros">Carpinteros</option>
+            </select><br>
+        
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/perfilcliente.css">
 
-        <!-- Google Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
     <title>Document</title>
 </head>
+
 <body>
     <!-- Aca comienzan las alertas -->
     <div class="alert-ask" id="alertAsk">
@@ -26,15 +29,40 @@
         Seleccionar imagen
         <form action="/guardar-imagen" method="post" enctype="multipart/form-data">
             <div class="box-file">
-                <input type="file" name="imagen" accept="image/*" class="file" >Seleccionar
+                <input type="file" name="imagen" accept="image/*" class="file">Seleccionar
 
                 <input type="submit" value="guardar">
             </div>
         </form>
-        
+
     </div>
     <!-- Aca terminan las alertas -->
-    
+
+    <div class="alerta-catalogo-cliente">
+        {% for aplicacion in aplicaciones %}
+        {%  if aplicacion['EstadoOferta'] != 'Inactiva' %}
+        <div class="box-catalogo">
+
+            <p>Titulo empleo:</p>
+            <p class="texto-informacio-catalogo">{{ aplicacion['TituloEmpleo'] }}</p>
+            <p>descripccion empleo:</p>
+            <p class="texto-informacio-catalogo">{{ aplicacion['DescripcionEmpleo'] }}</p>
+            <p>requisitos empleo:</p>
+            <p class="texto-informacio-catalogo">{{ aplicacion['RequisitosEmpleo'] }}</p>
+            <p>fecha publicacion:</p>
+            <p class="texto-informacio-catalogo">{{ aplicacion['FechaPublicacion'] }}</p>
+            {{ aplicacion['IdEmpleo'] }}
+            
+            <a href="{{ url_for('perfilcliente.desactivaoferta', id=aplicacion['IdEmpleo']) }}">eliminar</a>
+            
+        </div>
+        {% endif %}
+        {% endfor %}
+        
+        
+        <button class="btn-cancelar-catalogo">X</button>
+    </div>
+
     <!-- header--------------------------- -->
     <header>
         <a href="/#home" class="logo">
@@ -45,10 +73,12 @@
             <li><a href="/#nosotros">Nosotros</a></li>
             <li><a href="/catalogo">Servicios</a></li>
             <li><a href="/#footer">Contactanos</a></li>
-            <li><a href="{{ url_for('logout.logout') }}">Cerrar Sesión</a></li>
-            
+            <li><a href="/">Publicaciones</a></li>
+            <li><a href="{{ url_for('ofertaempleo.ofertaempleo') }}">Publicar</a></li>
+            <li><a href="{{ url_for('logout.logout') }}">>]</a></li>
+
         </ul>
-        
+
         <div class="h-boton">
             <div class="icono-menu"><ion-icon name="reorder-four-outline"></ion-icon></div>
         </div>
@@ -59,11 +89,17 @@
     <main>
         <div class="card-user">
             <div class="user-image">
-                <img src="{{ url_imagen }}" alt="" class="card-user-img" id="imgUser"> 
+               
+                <div class="imagen-usuario">
+                    <img src="{{ url_imagen }}" alt="" class="card-user-img" id="imgUser">
+                </div>
             </div>
-            <h1>Bienvenido, {{ nombre }}!</h1>
+            <h1>Bienvenido, {{ sesion['nombre'] }}!</h1>
             <div class="box-info">
-                <p>Lorem ipsum dolor</p>
+                <p>Lorem ipsum dolor orem ipsum dolor, sit amet consectetur adipisicing elit. Ea ipsum aliquam
+                    consequuntur,
+                    impedit tempora architecto magnam distinctio modi cumque porro? Lorem ipsum dolor sit,
+                    amet consectetur adipisicing elit. Corporis voluptatem nostrum dolorem iste dd </p>
             </div>
         </div>
 
@@ -73,58 +109,61 @@
             </div>
             <div class="box-backg">
 
+        
+            {% for aplicacion in aplicaciones%}
+            {% if aplicacion['EstadoAplicacion'] != 'rechazada' and aplicacion['EstadoAplicacion'] != 'finalizada' %}
                 <div class="box-coment">
                     <div class="box-backg-user">
-                        <img src="/static/multimedia/home/undraw_pic_profile_re_7g2h.svg" alt="" class="img-backg-user">
+                        <img src="{{ url_imagen_aplicacion }}" alt="" class="img-backg-user">
                     </div>
+    
                     <div class="box-coment-user">
                         <div class="box-coment-text">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea ipsum aliquam consequuntur, impedit tempora architecto magnam distinctio modi cumque porro? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis voluptatem nostrum dolorem iste illum soluta rerum, illo ea dolore ab odit nemo veritatis nam nihil eum vitae repellendus neque perferendis pariatur ex voluptate deleniti maiores tenetur est! Quas laborum possimus, itaque, consequuntur culpa fugit quisquam delectus nulla magni sit praesentium?Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facere itaque impedit vero autem totam nulla eum animi! Incidunt sint obcaecati laborum velit consectetur nam quos vel harum placeat itaque. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati natus sint dignissimos esse nesciunt consequuntur voluptatibus, fugiat distinctio eum perferendis dolor odit ipsa nostrum dolorum animi placeat beatae provident voluptatem doloremque repellat quos vitae rerum suscipit quaerat. Consequuntur, maxime modi doloremque natus, nostrum et possimus vitae dolorem nesciunt reiciendis quasi pariatur iure hic. Enim, unde, reprehenderit ea eius quaerat fugit doloremque et distinctio sapiente explicabo accusamus dolorem blanditiis? Voluptate autem amet dolore, sunt consequuntur quos corrupti dolorem voluptatum distinctio, molestiae officiis aperiam. Architecto officia praesentium esse saepe sapiente facilis sed rem cumque laudantium dignissimos nulla, voluptas tempora cupiditate, in dolorum!</p>
+                            <!-- </p>  
+                            -->
+                        
+                            <div class="nombre">
+                                <div class="nombre-text"><h2>Nombre:</h2></div>
+                                <p>{{ aplicacion['NombresUsuario']}}
+                            </div>
+                            <div class="fecha">
+                                <div class="fecha-text"><h2>Fecha:</h2></div>
+                                <p>{{ aplicacion['FechaAplicacion']}}
+                            </div>
+                            <div class="valor">
+                                <div class="valor-text"><h2>Valor :</h2></div>
+                                <p>{{ aplicacion['ValorSugerido']}}</p> 
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div class="box-botones">
+                        {% if aplicacion['EstadoAplicacion'] == 'admitida' %}
+                            <a href="#" class="aceptar">contrado</a>
+                            <a href="{{ url_for('correo.finalizar', idu=aplicacion['IdAplicaciones'] )}}" class="rechazar">Finalizar</a>
+                            
+                        {% endif %}
+                        {% if aplicacion['EstadoAplicacion'] == 'pendiente' %}
+                            <a href="{{ url_for('correo.contrato', ido=aplicacion['IdUsuario'] ,id=sesion['nombre'], ide=aplicacion['IdAplicaciones'] ) }}" class="aceptar">Aceptar</a>
 
-                <div class="box-coment">
-                    <div class="box-backg-user">
-                        <img src="/static/multimedia/home/undraw_pic_profile_re_7g2h.svg" alt="" class="img-backg-user" >
+                            <a href="{{ url_for('correo.rechazar', ida=aplicacion['IdAplicaciones'] ) }}" class="rechazar">Rechazar</a>
+                        {% endif %}
                     </div>
-                    
-                    <div class="box-coment-user">
-                        <div class="box-coment-text">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea ipsum aliquam consequuntur, impedit tempora architecto magnam distinctio modi cumque porro? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis voluptatem nostrum dolorem iste illum soluta rerum, illo ea dolore ab odit nemo veritatis nam nihil eum vitae repellendus neque perferendis pariatur ex voluptate deleniti maiores tenetur est! Quas laborum possimus, itaque, consequuntur culpa fugit quisquam delectus nulla magni sit praesentium?Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facere itaque impedit vero autem totam nulla eum animi! Incidunt sint obcaecati laborum velit consectetur nam quos vel harum placeat itaque. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati natus sint dignissimos esse nesciunt consequuntur voluptatibus, fugiat distinctio eum perferendis dolor odit ipsa nostrum dolorum animi placeat beatae provident voluptatem doloremque repellat quos vitae rerum suscipit quaerat. Consequuntur, maxime modi doloremque natus, nostrum et possimus vitae dolorem nesciunt reiciendis quasi pariatur iure hic. Enim, unde, reprehenderit ea eius quaerat fugit doloremque et distinctio sapiente explicabo accusamus dolorem blanditiis? Voluptate autem amet dolore, sunt consequuntur quos corrupti dolorem voluptatum distinctio, molestiae officiis aperiam. Architecto officia praesentium esse saepe sapiente facilis sed rem cumque laudantium dignissimos nulla, voluptas tempora cupiditate, in dolorum!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="box-coment">
-                    <div class="box-backg-user">
-                        <img src="/static/multimedia/home/undraw_pic_profile_re_7g2h.svg" alt="" class="img-backg-user">
-                    </div>
-                    <div class="box-coment-user">
-                        <div class="box-coment-text">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea ipsum aliquam consequuntur, impedit tempora architecto magnam distinctio modi cumque porro? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis voluptatem nostrum dolorem iste illum soluta rerum, illo ea dolore ab odit nemo veritatis nam nihil eum vitae repellendus neque perferendis pariatur ex voluptate deleniti maiores tenetur est! Quas laborum possimus, itaque, consequuntur culpa fugit quisquam delectus nulla magni sit praesentium?Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facere itaque impedit vero autem totam nulla eum animi! Incidunt sint obcaecati laborum velit consectetur nam quos vel harum placeat itaque. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati natus sint dignissimos esse nesciunt consequuntur voluptatibus, fugiat distinctio eum perferendis dolor odit ipsa nostrum dolorum animi placeat beatae provident voluptatem doloremque repellat quos vitae rerum suscipit quaerat. Consequuntur, maxime modi doloremque natus, nostrum et possimus vitae dolorem nesciunt reiciendis quasi pariatur iure hic. Enim, unde, reprehenderit ea eius quaerat fugit doloremque et distinctio sapiente explicabo accusamus dolorem blanditiis? Voluptate autem amet dolore, sunt consequuntur quos corrupti dolorem voluptatum distinctio, molestiae officiis aperiam. Architecto officia praesentium esse saepe sapiente facilis sed rem cumque laudantium dignissimos nulla, voluptas tempora cupiditate, in dolorum!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="box-coment">
-                    <div class="box-backg-user">
-                        <img src="/static/multimedia/home/undraw_pic_profile_re_7g2h.svg" alt="" class="img-backg-user">
-                    </div>
-                    <div class="box-coment-user">
-                        <div class="box-coment-text">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea ipsum aliquam consequuntur, impedit tempora architecto magnam distinctio modi cumque porro? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem quaerat nobis minima libero quis deserunt, odit nemo ut, accusamus aliquid, voluptate eligendi quae voluptatum. Tempora ut deserunt cupiditate optio eius?</p>
-                        </div>
+                </div>  
+                {% endif %}        
+            {% endfor%}
+   
 
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    
+
     <footer class="footer" id="footer">
         <div class="grupo-1">
             <div class="box">
                 <figure>
-                    <a href="#" >
+                    <a href="#">
                         <img src="../static/multimedia/logo.png" alt="">
                     </a>
                 </figure>
@@ -137,8 +176,9 @@
             <div class="box">
                 <h2>Siguenos</h2>
                 <div class="red-social">
-                    <a href="https://www.youtube.com/" link="" class="R-1"><ion-icon name="logo-facebook" role="img" class="md hydrated"></ion-icon></a>
-                    <a href="" class="R-2"><ion-icon name="logo-whatsapp"></ion-icon>   </a>
+                    <a href="https://www.youtube.com/" link="" class="R-1"><ion-icon name="logo-facebook" role="img"
+                            class="md hydrated"></ion-icon></a>
+                    <a href="" class="R-2"><ion-icon name="logo-whatsapp"></ion-icon> </a>
                     <a href="" class="R-3"><ion-icon name="logo-tiktok"></ion-icon></a>
                     <a href="" class="R-4"><ion-icon name="logo-instagram"></ion-icon></a>
                 </div>
@@ -147,15 +187,16 @@
         <div class="grupo-2">
             <small>&copy; 2023 <b>Labor lane</b>- Todos los Derechos Reservados</small>
         </div>
-        
-        
+
+
     </footer>
 
-        <!--link de la paguina de los iconos -->    
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!--link de la paguina de los iconos -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <div class="loader"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="../static/js/perfilcliente.js"></script>
 </body>
+
 </html>

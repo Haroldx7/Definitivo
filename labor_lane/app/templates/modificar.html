@@ -1,65 +1,95 @@
 <html>
 <head>
-    <title>Empleados</title>
+    <link rel="stylesheet" href="../static/css/formularios.css">
+    <title>Oferta</title>
+    <!-- Google Fonts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ 
+    <link rel="stylesheet" href="../static/css/formularios.css">
     <style>
-        /* Estilos del formulario de edición de empleados */
-body {
-    background-color: #f2f3f4;
-    font-family: Arial, sans-serif;
-}
+        /* Estilos para el formulario de oferta laboral */
+        body {
+            background-color: #0f2479;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-form {
-    max-width: 600px;
-    margin: 50px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-h1 {
-    text-align: center;
-    color: #061d70;
-}
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin: 50px;
+            padding: 100px;
+        }
 
-label {
-    display: block;
-    margin-bottom: 8px;
-    color: #061d70;
-}
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
 
-input,
-select,
-textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            }
 
-input[type="submit"] {
-    background-color: #061d70;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1em;
-}
+            input[type="date"] {
+                width: calc(100% - 22px); /* Ajustar para compensar el relleno */
+            }
 
-input[type="submit"]:hover {
-    background-color: #004080;
-}
+            input[type="submit"] {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 1em;
+            }
 
-/* Estilos adicionales para mejorar la legibilidad del formulario */
+            input[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+
+            
+
+
+            /* Estilos adicionales para mejorar la legibilidad del formulario */
 
     </style>
 </head>
 <body>
+    <header>
+        <a href="/#home" class="logo">
+            <img src="../static/multimedia/logo.png" alt="">
+        </a>
+        <ul class="navbar">
+            <li><a href="/#home">Home</a></li>
+            <li><a href="/#nosotros">Nosotros</a></li>
+            <li><a href="/catalogo">Servicios</a></li>
+            <li><a href="/#footer">Contáctanos</a></li>
+        </ul>
+
+    </header>
     <h1>Editar Empleado</h1>
-    <!-- {% for empleado in empleados %} -->
+    {% for empleado in empleados %}
+
     <form action="/actualizar" method="post">
         <label for="id">ID:</label>
         <input type="text" name="id" id="id" value="{{ empleado[0] }}" readonly><br>
@@ -73,11 +103,11 @@ input[type="submit"]:hover {
         <label for="s_apellido">Segundo Apellido:</label>
         <input type="text" name="s_apellido" id="s_apellido" value="{{ empleado[3] }}" required><br>
 
-        <label for="genero">Genero:</label>
+        <label for="genero">Género:</label>
         <select name="genero" value="{{ empleado[4] }}" required>
             <option value="masculino" id="masculino">Masculino</option>
             <option value="femenino" id="femenino">Femenino</option>
-            <option value="otro_genero" id="otro_genero">Otro genero</option>
+            <option value="otro_genero" id="otro_genero">Otro género</option>
         </select><br>
 
         <label for="tipo_documento">Tipo de documento:</label>
@@ -122,10 +152,10 @@ input[type="submit"]:hover {
 
         <label for="estado_civil"> Estado Civil:</label>
         <select name="estado_civil" value="{{ empleado[14] }}" required>
-            <option value="indiferente" id="indiferente" selected>indiferente</option>
-            <option value="soltero" id="soltero" >soltero</option>
-            <option value="casado" id="casado" >casado</option>
-            <option value="union_libre" id="union_libre" >union libre</option>
+            <option value="indiferente" id="indiferente" selected>Indiferente</option>
+            <option value="soltero" id="soltero" >Soltero</option>
+            <option value="casado" id="casado" >Casado</option>
+            <option value="union_libre" id="union_libre" >Union libre</option>
             <option value="separado" id="separado" >Separado</option>
             <option value="viudo" id="viudo" >Viudo</option>
         </select><br>
@@ -136,50 +166,63 @@ input[type="submit"]:hover {
         <label for="LibretaMilitar"> Libreta Militar:</label>
         <select name="LibretaMilitar" value="{{ empleado[16] }}" required>
             <option value="no_tiene" id="no_tiene">No tiene</option>
-            <option value="libreta_primera" id="libreta_primera">Libreta de primera</option>
-            <option value="libreta_segunda" id="libreta_segunda">libreta de segunda</option>
+            <option value="libreta_primera" id="libreta_primera">Libreta de Primera</option>
+            <option value="libreta_segunda" id="libreta_segunda">Libreta de Segunda</option>
         </select><br>
 
         <label for="Contenido">Contenido:</label>
         <textarea type="text" name="Contenido" id="Contenido" value="{{ empleado[17] }}" required></textarea><br>
 
-        <label for="rol"> Que Rol tienes:</label>
+        <label for="rol"> ¿Qué Rol tienes?:</label>
         <select name="rol" readonly>
             <option value="1" id="1" >Cliente</option>
             <option value="3" id="3" selected: disabled>Empleado</option>
         </select><br>
 
-        <label for="Barrio"> Barrio:</label>
-        <select name="Barrio" value="{{ empleado[19] }}" required>       
-            <option value="Usaquen" id="Usaquen">Usaquén</option> 
-            <option value="Chapinero"  id="Chapinero">Chapinero<option> 
-            <option value="Santa_Fe"  id="Santa_Fe">Santa Fe<option> 
-            <option value="San_Cristobal"  id="San_Cristobal">San Cristóbal<option> 
-            <option value="Usme"  id="Usme">Usme<option> 
-            <option value="Tunjuelito"  id="Tunjuelito">Tunjuelito<option> 
-            <option value="Bosa"  id="Bosa">Bosa<option>
-            <option value="Kennedy"  id="Kennedy">Kennedy<option> 
-            <option value="Fontibon"  id="Fontibon">Fontibón<option> 
-            <option value="Engativa"  id="Engativa">Engativá<option> 
-            <option value="Suba"  id="Suba">Suba<option> 
-            <option value="Barrios_Unidos"  id="Barrios_Unidos">Barrios Unidos<option> 
-            <option value="Teusaquillo"  id="Teusaquillo">Teusaquillo<option> 
-            <option value="Los_Martires"  id="Los_Martires">Los Mártires<option> 
-            <option value="Antonio_Nariño"  id="Antonio_Nariño">Antonio Nariño<option>
-            <option value="Puente_Aranda"  id="Puente_Aranda">Puente Aranda<option> 
-            <option value="La_Candelaria"  id="La_Candelaria">La Candelaria<option> 
-            <option value="Rafael_Uribe_Uribe"  id="Rafael_Uribe_Uribe">Rafael Uribe Uribe<option> 
-            <option value="Ciudad_Bolivar"  id="Ciudad_Bolivar">Ciudad Bolívar<option>
-        </select><br>
 
         <label for="Estado"> Estado:</label>
         <select name="Estado" readonly>
-            <option value="ACTIVO" id="ACTIVO" >ACTIVO</option>
-            <option value="INACTIVO" id="INACTIVO" selected: disabled>INACTIVO</option>
+            <option value="ACTIVO" id="ACTIVO" >Activo</option>
+            <option value="INACTIVO" id="INACTIVO" selected: disabled>Inactivo</option>
         </select><br>
         
         <input type="submit" value="Enviar">
     </form>
-        <!-- {% endfor %} -->
+    {% endfor %}
+    <footer class="footer" id="footer">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#" >
+                        <img src="../static/multimedia/home/logo.png" alt="">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>Sobre Nosotros</h2>
+                <p>Somos un emprendimiento Apoyado del SENA y con la búsqueda de mejorar el país.</p>
+                <p>Estamos en el inicio del cambio para poder dar trabajos.</p>
+            </div>
+            <div class="box">
+                <h2>Síguenos</h2>
+                <div class="red-social">
+                    <a href="https://www.youtube.com/" link="" class="R-1"><ion-icon name="logo-facebook" role="img" class="md hydrated"></ion-icon></a>
+                    <a href="" class="R-2"><ion-icon name="logo-whatsapp"></ion-icon>   </a>
+                    <a href="" class="R-3"><ion-icon name="logo-tiktok"></ion-icon></a>
+                    <a href="" class="R-4"><ion-icon name="logo-instagram"></ion-icon></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2023 <b>Labor Lane</b> - Todos los Derechos Reservados</small>
+        </div>
+    </footer>
+    <!--link de la paguina de los iconos -->    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="../static/js/home.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
 </body>
 </html>

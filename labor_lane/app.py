@@ -14,6 +14,7 @@ init_app(app)
 app.secret_key = os.urandom(24)
 
 
+
 # @app.route('/habilidad', methods=['POST'])
 # def habilidad():
 #     Nombre = request.form['Nombre']
@@ -162,57 +163,7 @@ app.secret_key = os.urandom(24)
 #         return redirect('/consulta-ofertas',ID=ID)
 #     else:
 #         return render_template('resultado.html', mensaje=mensaje)
-    
 
-
-# @app.route('/Oferta', methods=['POST'])
-# def Oferta():
-#     Nombre = request.form['Nombre']
-#     TituloEmpleo = request.form['TituloEmpleo']
-#     DescripcionEmpleo = request.form['DescripcionEmpleo']
-#     RequisitosEmpleo = request.form['RequisitosEmpleo']
-#     HabilidadesEmpleo = request.form['HabilidadesEmpleo']
-#     FechaPublicacion = request.form['FechaPublicacion']
-#     FechaVencimiento = request.form['FechaVencimiento']
-#     Estado = 'ACTIVO'
-#     categoria = request.form['categoria']
-    
-#     db_config = {
-#         'host': 'localhost',
-#         'user': 'root',
-#         'password': '',
-#         'database': 'db_laborlane'
-#     }
-#     cnx = mysql.connector.connect(**db_config)  
-#     cursor = cnx.cursor()
-#     sql = "select IdUsuario from usuario where NombresUsuario=%s"   
-#     data = (Nombre,)
-#     print (data)
-#     try: 
-#         cursor.execute(sql, data)
-#         resultado = cursor.fetchone()
-#         if resultado:
-#             usuario_id = resultado[0]
-#             s= "insert into OfertaEmpleo (TituloEmpleo, DescripcionEmpleo, RequisitosEmpleo, HabilidadesEmpleo, FechaPublicacion, FechaVencimiento, current_Estado, FK_IdCategoria, FK_IdUsuario) values (%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-#             dato = (TituloEmpleo, DescripcionEmpleo, RequisitosEmpleo, HabilidadesEmpleo, FechaPublicacion, FechaVencimiento, Estado, categoria, usuario_id)
-#             cursor.execute(s, dato)
-#             mensaje = "correctamente"
-#         else:
-#             mensaje = "Usuario no encontrado"
-#             cnx.commit()
-#     except mysql.connector.Error as error: 
-#             print("Error al insertar los datos:", error)
-#             mensaje = "Error al insertar"
-            
-#     cursor.close()
-#     cnx.close()
-#     if mensaje == "correctamente":
-#         return render_template('botones.html', usuario_id=usuario_id)
-#     else:
-#         return render_template('resultado.html', mensaje=mensaje)
-    
-
-    
 if __name__ == '__main__':
     app.run(debug=True)
 

@@ -1,0 +1,305 @@
+:root {
+    --h1-font: 5rem;
+    --h2-font: 2.9rem;
+    --p-font: 1.1rem;
+    --bg-color: #05144d;
+    --text-color: #ffffff;
+    --main-color: #4a90df;
+    --other--color: #d6d6d6;
+}
+
+.main-user{
+    background-color: var(--bg-color);
+    width: auto;
+    height: a;
+    position: relative;
+    margin: 25vh;
+    border: 10px solid var(--bg-color);
+    border-radius: .7rem;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.perfil{
+    background-color: var(--main-color);
+    border-radius: .4rem 0px 0px .4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.perfil .box-perfil{
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.box-perfil img {
+    margin: 0 0 -5px 0 ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+.box-perfil p {    
+    color: var(--text-color);
+    text-align: center;
+    width: 21vh;
+    height: 0vh;
+    padding: 0px;
+    font-size: 2.9vh;
+    font-weight: 700;
+    
+        
+}
+
+.perfil .box-imagen{
+    background-color: var(--bg-color);
+    width: 20vh;
+    height: 40%;
+    border-radius: 50%;
+    margin: 5px auto;
+    position: relative;
+}
+.box-imagen ion-icon{
+    width: 100%;
+    height: 100%;
+}
+
+.perfil .nombre{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 3vh;
+    width: 100%;
+    height: 20px;
+}
+
+.perfil .datos{
+    background-color: var(--bg-color);
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: .7rem;
+    font-size: 3vh;
+    font-weight: 500;
+    padding: 10px;  
+    color: #4a90df;
+}
+
+.informacion{
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.informacion .box-info{
+    padding: 5px 0 20px 0;
+    background-color: var(--bg-color);
+    width: 90%;
+    height: 90%;
+}
+
+
+.trabajos{
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.trabajos .box-trabajos{
+    background-color: var(--bg-color);
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+
+.box-trabajos .trabajos{
+    background-color: var(--main-color);
+    width: 100%;
+    height: 100%;
+}
+
+.bo1 p,
+.bo2 p,
+.bo3 p,
+.bo4 p{
+    color: var(--text-color);
+    text-align: center;
+    width: 21vh;
+    height: 0vh;
+    padding: 0px;
+    font-size: 2.9vh;
+    font-weight: 700;
+
+}
+
+
+.trabajos .box-boxs{
+    background-color: var(--main-color);
+    width: 50vh;
+    height: 50vh;
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    margin: 5vh 0 5vh 0;
+    text-align: center;
+}
+
+.box-boxs .titulo-box{
+    background-color: var(--main-color);
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+
+.box-boxs ion-icon {
+    width: 100px;
+    height: 100px;
+    transition: 1s;
+    bottom: 0px;
+    padding: 0.5vh;
+    color: var(--bg-color);
+}
+
+.box1{
+    background:var(--text-color);
+    border: 10px solid var(--bg-color);
+    border-radius: .7rem;
+    width: auto;
+    height: auto;
+    transition: 1s;
+}
+.box1:hover ion-icon{
+    width: 110px;
+    height: 110px;
+}
+.box2{
+    background:var(--text-color);
+    border: 10px solid var(--bg-color);
+    border-radius: .7rem;
+    width: auto;
+    height: auto;
+    transition: 1s;
+}
+.box2:hover ion-icon{
+    width: 110px;
+    height: 110px;
+}
+.box3{
+    background:var(--text-color);
+    border: 10px solid var(--bg-color);
+    border-radius: .7rem;
+    width: auto;
+    height: auto;
+    transition: 1s;
+}
+.box3:hover ion-icon{
+    width: 110px;
+    height: 110px;
+}
+.box4{
+    background:var(--text-color);
+    border: 10px solid var(--bg-color);
+    border-radius: .7rem;
+    width: auto;
+    height: auto;
+    transition: 1s;
+}
+.box4:hover ion-icon{
+    width: 110px;
+    height: 110px;
+}
+
+.box-trabajos .botones{
+    background-color: var(--main-color);
+    width: 100%;
+    height: 15%;
+    position: absolute;
+    bottom: 0px;
+}
+
+
+.trabajos .botones{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    gap: 7vh;
+    transition: 1s;
+}
+.botones .btn{
+    border: 5px solid var(--bg-color);
+    border-radius: 7vh;
+    padding: 10px;
+    background-color: var(--other--color);
+    color: var(--bg-color);
+    font-size: 3vh;
+    font-weight: 700;
+    transition: .5s;
+}
+.botones .btn:hover{
+    font-size: 3.5vh;
+    margin-left: -0.5vh;
+}
+
+.box-soli-rese h1{
+    text-align: center;
+    color: var(--text-color);
+}
+
+.soli-rese{
+    background-color: var(--main-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 .4rem .4rem  0;
+}
+
+.imagen ion-icon{
+    background-color: var(--other--color);
+    border-radius: 50%;
+    width: 10vh;
+    height: 10vh;
+}
+
+.soli-rese .box-soli-rese{
+    background-color: var(--bg-color);
+    width: 90%;
+    height: 90%;
+}
+
+.box-soli-rese .re-titulo{
+    background-color: var(--main-color);
+    width: 100%;
+    height: 40px;
+}
+.box-soli-rese .box-comentarios{
+    width: 70%;
+    height: 40%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+.box-soli-rese{
+    border-radius: .9vh;
+}
+.box-comentarios{
+    display: flex;
+    flex-direction: c;
+}

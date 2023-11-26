@@ -7,7 +7,9 @@ from app.routes.tc import tc_bp
 from app.routes.crud import crud_bp
 from app.routes.logout import logout_dp
 from app.routes.admin import admin_bp
-
+from app.routes.perfilempleado import perfilempleado_bp
+from app.routes.ofertaempleo import ofertaempleo_bp
+from app.routes.correo import correo_bp
 
 
 def init_app(app):
@@ -20,3 +22,6 @@ def init_app(app):
     app.register_blueprint(crud_bp)
     app.register_blueprint(logout_dp)
     app.register_blueprint(admin_bp)
+    app.register_blueprint(perfilempleado_bp)
+    app.register_blueprint(ofertaempleo_bp)
+    app.register_blueprint(correo_bp)

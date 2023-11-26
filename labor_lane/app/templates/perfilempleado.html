@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/perfilcliente.css">
+    <link rel="stylesheet" href="../static/css/perfilempleado.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Aca comienzan las alertas -->
+    <!-- Aca terminan las alertas -->
+    <!-- header--------------------------- -->
+    <div class="alert-ask" id="alertAsk">
+        Quieres cambiar la imagen?
+        <div class="box-btn">
+            <button class="btn-alert" id="btnA">Aceptar</button>
+            <button class="btn-alert" id="btnC">Cancelar</button>
+        </div>
+    </div>
+
+    <div class="alert-acep" id="alertAcep">
+        Seleccionar imagen
+        <form action="/guardar-imagen-empleado" method="post" enctype="multipart/form-data">
+            <div class="box-file">
+                <input type="file" name="imagen" accept="image/*" class="file">Seleccionar
+
+                <input type="submit" value="guardar">
+            </div>
+        </form>
+
+    </div>
+    <header>
+        <a href="/#home" class="logo">
+            <img src="../static/multimedia/logo.png" alt="">
+        </a>
+
+
+
+        <ul class="navbar">
+            <li><a href="/#home">Home</a></li>
+            <li><a href="/#nosotros">Nosotros</a></li>
+            <li><a href="/catalogo">Servicios</a></li>
+            <li><a href="/#footer">Contactanos</a></li>
+            <li><a href="{{ url_for('logout.logout') }}">>]</a></li>
+        </ul>
+
+        <div class="h-boton">
+            <div class="icono-menu"><ion-icon name="reorder-four-outline"></ion-icon></div>
+        </div>
+
+    </header>
+
+    
+
+    <div class="main-user">
+        <div class="perfil">
+            <div class="box-perfil">
+                <div class="box-imagen imagen-usuario">
+                    <img src="{{ url_imagen }}" alt="" id="imgUser">
+                </div>
+                    <p class="nombre">{{ datos['NombresUsuario'] }}</p>
+                <div class="datos"><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem id, recusandae laudantium beatae, fugit provident eum maiores nihil pariatur eius, saepe qui fugiat minima officiis repellendus ut aliquam. Veritatis, unde.</p></div>
+            </div>
+        </div>
+
+        <div class="informacion">
+            <div class="box-info"><p>{{ datos['ContenidoPerfil'] }}</p></div>
+        </div>
+
+
+        <div class="trabajos">
+            <div class="box-trabajos">
+                <h1 class="titulo-trabajo">Trabajos</h1>
+                <div class="trabajos">
+                    <div class="box">
+                        <div class="box1"></div>
+                        <div class="box2"></div>
+                        <div class="box3"></div>
+                        <div class="box4"></div>
+                    </div>
+                </div>
+                <div class="botones">
+                    {% if not sesion %}
+                        <a href="{{ url_for('catalogo.contratar') }}"><button class="btn">Consultar</button> </a>
+                    {% endif %}
+
+                    {% if sesion['rol'] == 3 %}
+                        <a href="{{ url_for('catalogo.contratar') }}"><button class="btn">Consultar</button> </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="soli-rese">
+            <h1 class="re-titulo">Reseñas</h1>
+            <div class="box-soli-rese">
+                
+                <div class="box-comentarios">
+                    <div class="imagen">
+                        <img src="../static/multimedia/home/undraw_pic_profile_re_7g2h.svg">
+                    </div>
+                    <div class="comentario"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, perferendis?</p>                    <a href="#" class="seguridad">
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon> 
+                    </a></div>
+                </div>
+                <div class="box-comentarios">
+                    <div class="imagen">
+                        <img src="../static/multimedia/home/undraw_pic_profile_re_7g2h.svg">
+                    </div>
+                    <div class="comentario">  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, perferendis?</p>
+                        <a href="#" class="seguridad">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon> 
+                        </a></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" id="footer">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                        <img src="../static/multimedia/logo.png" alt="">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>Sobre Nosotros</h2>
+                <p>Somos un Emprendimiento Apoyado del sena y con la busqueda de mejorar el pais.</p>
+                <p>Estamos en El inicio del cambio para poder dar trabajos.</p>
+            </div>
+            <div class="box">
+                <h2>Siguenos</h2>
+                <div class="red-social">
+                    <a href="https://www.youtube.com/" link="" class="R-1"><ion-icon name="logo-facebook" role="img"
+                            class="md hydrated"></ion-icon></a>
+                    <a href="" class="R-2"><ion-icon name="logo-whatsapp"></ion-icon> </a>
+                    <a href="" class="R-3"><ion-icon name="logo-tiktok"></ion-icon></a>
+                    <a href="" class="R-4"><ion-icon name="logo-instagram"></ion-icon></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2023 <b>Labor lane</b>- Todos los Derechos Reservados</small>
+        </div>
+
+
+    </footer>
+
+    <!--link de la paguina de los iconos -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <div class="loader"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="../static/js/perfilcliente.js"></script>
+</body>
+
+</html>

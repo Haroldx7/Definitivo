@@ -1,13 +1,12 @@
-
 *{/* Esto selecciona y aplica en todos los elementos del documento */
     padding: 0;/* crea el espacio o área alrededor del contenido de un elemento */
     margin: 0;/* establece el margen para los cuatro lados */
     box-sizing: border-box;/* indica cómo se deben calcular las medidas de un elemento */
-    text-decoration: none;/* permite que el texto sea decorado mediante una de cinco propiedades: 
+    text-decoration: none;/* permite que el texto sea decorado mediante una de cinco propiedades:
     underline (subrayado),
-    overline (línea superior), 
-    line-through (tachado), 
-    blink (parpadeo), 
+    overline (línea superior),
+    line-through (tachado),
+    blink (parpadeo),
     o la por defecto none (ninguna) */
     list-style: none; /* Para no mostrar ningún marcador en una lista de elementos */
     border: none;    /* borde */
@@ -80,14 +79,14 @@ header{
     border-bottom: 2px solid #f2f3f4;
 }
 .navbar a:hover{
-    color: var(--text-color); 
+    color: var(--text-color);
 }
 
 
 .navbar a:hover{
     color: #abafc7;
     font-weight: 700;
-    
+   
 }
 .h-boton{
     display: flex;
@@ -112,10 +111,10 @@ header{
 }
 
 .img-user{
-    width: 22%;
+    width: 20%;
     min-width: 50px;
     height: auto;
-    position: relative;
+    position: absolute;
     left: 35%;
 }
 
@@ -127,7 +126,7 @@ main{
     align-items: center;
     justify-content: center;
     gap: 8%;
-    
+   
 }
 
 .card-user{
@@ -144,16 +143,6 @@ main{
 
 
 
-.user-image {
-    width: 70%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    position: relative;
-    padding: 10px;
-}
 
 
 
@@ -166,7 +155,13 @@ main{
     background-color: var(--other--color);
     border-radius: 50rem;
     border: solid 10px var(--bg-color);
+}
 
+.imagen-usuario{
+    background-color: #0f2479;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
 }
 
 .box-info{
@@ -219,26 +214,26 @@ main{
     width: 95%;
     height: 300px;
     display: grid;
-    overflow-y: scroll;
     border-radius: .70rem;
+    overflow-y: scroll;
 }
 
 .box-coment{
     background-color: var(--bg-color);
-    width: 90%;
-    height: 120px;
+    width: 100vh;
+    height: 25vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 10px auto;
-    gap: 1%;
-    overflow-y: scroll;
+    margin: 5px auto;
     border-radius: .70rem;
+    text-align: center;
+    padding: 0 5vh;
+    overflow-y: scroll;
 }
 
 .box-coment p{
-    padding: 0px 10px ;
     justify-content: center;
     text-align: center;
 }
@@ -247,16 +242,20 @@ main{
     width: 1px;
 }
 
-
 .box-backg-user{
-    width: 15%;
-    height: auto;
-    position: relative;
-    right: 20px;
+    width: 100px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: .70rem;
+}
+
+.box-backg-user img{
+    width: 20vh;
+    height: auto;
+    margin: 0 0 0 3vh;
+
 
 }
 .box-backg::-webkit-scrollbar{
@@ -269,20 +268,98 @@ main{
 }
 
 .box-coment-user{
-    width: 70%;
-    height: 100px;
+    width: 100%;    
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 3px;
-    border-radius: .70rem;
+    border-radius: 1.5vh;
+    padding: 0 0 0 4vh;
 }
 
 .box-coment-text{
-    width: 100%;
-    height: 75%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 7%;
+    height: 10%;
 }
+.box-coment-text p{
+    padding: 2vh;
+    background-color: var(--bg-color);
+    border: 0px solid var(--main-color);
+    border-radius: 1.5vh;
+    font-size: 2vh;
+    font-weight: 700;
+    border: 2px solid var(--main-color);
+}
+
+
+.nombre,
+.fecha,
+.valor{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-color);
+    width: 40vh;
+    font-size: 2vh;
+    font-weight: 700;
+    border: 0px solid var(--main-color);
+}
+.nombre p,
+.fecha p,
+.valor p{
+    width: 50%;
+}
+.valor{
+    border-radius: 0 0 1.5vh 1.5vh;
+
+}
+.nombre{
+    border-radius: 1.5vh 1.5vh 0 0;
+
+}
+
+.box-botones{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2vh;
+
+}
+.box-botones button{
+    width: 15vh;
+    height: 7vh;
+    border-radius: 1.5vh;
+
+    font-size: 2.5vh;
+    font-weight: 700;
+    color: var(--text-color);
+    transition: .5s;
+    cursor: pointer;
+}
+
+.aceptar{
+    background-color: green;
+}
+.aceptar:hover{
+    transform: scale(1.2);
+}
+.rechazar{
+    background-color: red;
+}
+.rechazar:hover{
+    transform: scale(1.2);
+}
+
+
+
+
+
 
 
 /* Aca comienzan las alertas */
@@ -328,7 +405,7 @@ main{
     z-index: 99;
     text-align: center;
 }
-/* 
+/*
 .box-file{
     background-color: white;
     color: var(--main-color);
@@ -364,6 +441,52 @@ main{
     margin: 0px;
 }
 
+
+.alerta-catalogo-cliente{
+    background-color: #bec4dd;
+    width: 400px;
+    height: 400px;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    overflow-y: scroll;
+}
+
+.box-catalogo{
+    background-color: red;
+    width: 70%;
+    height: auto;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.alerta-catalogo-cliente::-webkit-scrollbar{
+    width: 2px;
+}
+.box-catalogo a{
+    color: #c2c2dd;
+}
+
+.btn-cancelar-catalogo{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.texto-informacio-catalogo{
+    color: black;
+}
+
 .loader {
     position: fixed;
     left: 0px;
@@ -373,6 +496,8 @@ main{
     z-index: 9999;
     background: url('images/pageLoader.gif') 50% 50% no-repeat rgb(0, 0, 0);
 }
+
+
 
 /* Realizamos un footer Con tres columnas y con el logo de la imagen y las redes sociales */
 
@@ -592,7 +717,7 @@ main{
     .home-buscar{
         width: 90%;
     }
-} 
+}
 
 
 
@@ -606,8 +731,8 @@ main{
     .logo img{
         left: 10px;
     }
-    .card-user{   
-        width: 70%; 
+    .card-user{  
+        width: 70%;
     }
 
     .card-work{
@@ -618,13 +743,8 @@ main{
         color: aqua;
     }
 
-    .box-backg-user{
-        height: 50px;
-        right: 10px;
-    }
-
     .alert-ask{
         font-size: 0.5em;
     }
-    
+
 }

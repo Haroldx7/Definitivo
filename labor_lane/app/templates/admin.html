@@ -1,18 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrador</title>
+        <link rel="stylesheet" href="../static/css/perfiles.css">
+        <link rel="stylesheet" href="../static/css/perfiladmin.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <title>Document</title>
 </head>
 
-
 <body>
-    <h1>Bienvenido {{ nombre }}</h1>
-    <a href="{{ url_for('admin.registrar_admin') }}"><button>Registrar admin</button></a>
-    <a href="{{ url_for('formulario.formulario') }}"><button>Registrar otra persona</button></a>
-    <a href="/consultas"><button>Consultas de usuarios</button></a>
-    <a href="/home"><button>Vista de usuario</button></a>
-    <a href="/"><button>Cerrar sesion</button></a>      
+    <!-- Aca comienzan las alertas -->
+    <!-- Aca terminan las alertas -->
+    <!-- header -->
+    <header>
+        <a href="/#home" class="logo">
+            <img src="../static/multimedia/logo.png" alt="">
+
+        </a>
+        <ul class="navbar">
+            <li><a href="/#home">Home</a></li>
+            <li><a href="/#nosotros">Nosotros</a></li>
+            <li><a href="/catalogo">Servicios</a></li>
+            <li><a href="/#footer">Contáctanos</a></li>
+            <li><a href="{{ url_for('logout.logout') }}"><ion-icon name="log-out"></ion-icon></a></li>
+        </ul>
+
+        <div class="h-boton">
+            <div class="icono-menu"><ion-icon name="reorder-four-outline"></ion-icon></div>
+        </div>
+
+    </header>
+
+    <div class="main-user">
+        <div class="perfil">
+            <div class="box-perfil">
+                <div class="box-imagen">
+                    <img src="../static/multimedia/logo.png" alt="">
+                </div>
+                    <p class="nombre">Hola Admin <br>{{ nombre }}</p>
+            </div>
+        </div>
+
+        <div class="trabajos">
+            <div class="box-trabajos">
+                <div class="trabajos">
+                    <div class="box-boxs">
+                        <div class="bo1">
+                            <a href="{{ url_for('admin.registrar_admin')}}">
+                                <div class="box1" >
+                                    <ion-icon name="cloud-upload"></ion-icon>
+                                </div>
+                                <p>Registrar</p>
+                            </a>
+                        </div>
+                        <div class="bo2">
+                            <a href="{{ url_for('formulario.formulario') }}">
+                                <div class="box2" >
+                                    <ion-icon name="person-add-sharp"></ion-icon>
+                                </div>
+                                <p>Persona</p>
+                            </a>
+                        </div>
+                        <div class="bo3">
+                            <a href="/consultas">
+                                <div class="box3" >
+                                    <ion-icon name="people-circle"></ion-icon>
+                                </div>
+                                <p>Usuarios</p>
+                            </a>
+                        </div>
+                        <div class="bo4">
+                            <a href="/home">
+                                <div class="box4" >
+                                    <ion-icon name="log-out">
+                                </div>
+                                <p>Cerrar sesions</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+    <footer oter class="footer" id="footer">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                        <img src="../static/multimedia/logo.png" alt="">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>Sobre Nosotros</h2>
+                <p>Somos un emprendimiento Apoyado del SENA y con la búsqueda de mejorar el país.</p>
+                <p>Estamos en el inicio del cambio para poder dar trabajos.</p>
+            </div>
+            <div class="box">
+                <h2>Síguenos</h2>
+                <div class="red-social">
+                    <a href="https://www.youtube.com/" link="" class="R-1"><ion-icon name="logo-facebook" role="img"
+                            class="md hydrated"></ion-icon></a>
+                    <a href="" class="R-2"><ion-icon name="logo-whatsapp"></ion-icon> </a>
+                    <a href="" class="R-3"><ion-icon name="logo-tiktok"></ion-icon></a>
+                    <a href="" class="R-4"><ion-icon name="logo-instagram"></ion-icon></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2023 <b>Labor lane</b>- Todos los Derechos Reservados</small>
+        </div>
+
+
+    </footer>
+
+    <!--link de la paguina de los iconos -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <div class="loader"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="../static/js/perfilcliente.js"></script>
 </body>
+
 </html>
